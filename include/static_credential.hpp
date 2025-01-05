@@ -11,7 +11,8 @@ namespace credentialstore
             StaticCredentialStore() {}
             Credential GetCredential() 
             {   
-                std::vector<std::string> creds = {"root", "0penBmc"};
+                // std::vector<std::string> creds = {"root", "0penBmc"};
+                std::vector<std::string> creds = {"root", "calvin"};
                 return Credential(CredentialType::UsernamePassword, creds);
                 // return std::make_tuple<std::string,std::string>("root", "0penBmc");
             }

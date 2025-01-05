@@ -8,5 +8,10 @@ namespace bmcclib
         public:
             BmcClient(){}
             virtual ~BmcClient(){}
+            std::string getBmcVersion()
+            {
+                
+            }
+
     };
 }

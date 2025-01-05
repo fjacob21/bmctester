@@ -147,6 +147,23 @@ else
   ]
 endif
 
+openssl = dependency('openssl', required : false, version: '>=3.0.0')
+if not openssl.found() or get_option('b_sanitize') != 'none'
+  openssl_proj = subproject(
+    'openssl',
+    required: true,
+    default_options: ['warning_level=0', 'werror=false']
+  )
+  openssl = openssl_proj.get_variable('openssl_dep')
+  openssl = openssl.as_system('system')
+else
+  # When we build openssl as a subproject, the warnings analyzer starts
+  # flagging all the C macros as old style casts, so only enable the
+  # warning for non subprojects.
+  add_project_arguments('-Wold-style-cast', language: 'cpp')
+endif
+bmctester_dependencies += [openssl]
+
 executable('bmctester', root_src, 
     include_directories: root_inc, 
     dependencies : bmctester_dependencies,

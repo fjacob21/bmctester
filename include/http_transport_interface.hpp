@@ -14,5 +14,6 @@ namespace transport
             virtual Response Put(std::string path, Request request) = 0;
             virtual Response Post(std::string path, Request request) = 0;
             virtual Response Delete(std::string path, Request request) = 0;
+            virtual void SetBasicAuth(std::string username, std::string password) = 0;
     };
 }
