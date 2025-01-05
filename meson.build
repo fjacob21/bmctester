@@ -103,7 +103,7 @@ language : 'cpp')
 
 bmctester_dependencies = []
 
-libcurldep = dependency('libcurl')
+libcurldep = dependency('libcurl', version: '>=8.10.1')
 nlohmann_json_dep = dependency('nlohmann_json', version: '>=3.11.2', include_type: 'system')
 bmctester_dependencies += [libcurldep, nlohmann_json_dep]
 
